@@ -1,27 +1,29 @@
-import "../css/app.css"
-import "../vendor/croppr.css"
-import "phoenix_html"
-import { Socket } from "phoenix"
-import topbar from "../vendor/topbar"
-import { LiveSocket } from "phoenix_live_view"
-import Uploaders from "./uploaders"
-import MediaRecorderDemo from "./media_recorder_demo"
-import Croppr from "./croppr"
-import ResizeInput from "./resize_input"
+import '../css/app.css'
+import '../vendor/croppr.css'
+import 'phoenix_html'
+import { Socket } from 'phoenix'
+import topbar from '../vendor/topbar'
+import { LiveSocket } from 'phoenix_live_view'
+import Uploaders from './uploaders'
+import MediaRecorderDemo from './media_recorder_demo'
+import Croppr from './croppr'
 
 let hooks = {
   Croppr,
   MediaRecorderDemo,
-  ResizeInput
 }
 
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, { hooks, params: { _csrf_token: csrfToken }, uploaders: Uploaders })
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
+let liveSocket = new LiveSocket('/live', Socket, {
+  hooks,
+  params: { _csrf_token: csrfToken },
+  uploaders: Uploaders,
+})
 
 // Show progress bar on live navigation and form submits
-topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
-window.addEventListener("phx:page-loading-start", () => topbar.show())
-window.addEventListener("phx:page-loading-stop", () => topbar.hide())
+topbar.config({ barColors: { 0: '#29d' }, shadowColor: 'rgba(0, 0, 0, .3)' })
+window.addEventListener('phx:page-loading-start', () => topbar.show())
+window.addEventListener('phx:page-loading-stop', () => topbar.hide())
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()

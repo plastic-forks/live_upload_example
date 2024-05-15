@@ -23,22 +23,11 @@ defmodule DropsWeb.Router do
     live "/uploader/done", UploaderLive.Demo, :done
     live "/uploader/brb", UploaderLive.Demo, :continue
 
+    live "/uploads/media-recorder", UploadsLive.MediaRecorder, :index
     live "/croppr", CropprLive, :index
 
-    live "/uploads/basic", BasicUploadsLive, :index
-    live "/uploads/auto", UploadsLive.Auto, :index
-    live "/uploads/element", UploadsLive.Element, :index
-    live "/uploads/media-recorder", UploadsLive.MediaRecorder, :index
-    live "/uploads/component", ComponentUploadsLive, :index
-    live "/uploads/multi", MultiInputUploadsLive, :index
     live "/uploads/external/auto", ExternalLive.Auto, :index
-    live "/uploads/resize", UploadsLive.Resize, :index
 
-    live "/issues/2037", IssuesLive.ExternalUploadSingleEntry, :index
-    live "/issues/2271", IssuesLive.Issue2271, :index
-    live "/issues/2392", IssuesLive.Issue2392, :index
-
-    live "/writers/echo", WriterLive.Echo, :index
     live "/writers/s3", WriterLive.S3, :index
   end
 end
