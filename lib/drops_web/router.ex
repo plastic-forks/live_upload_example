@@ -26,8 +26,6 @@ defmodule DropsWeb.Router do
     live "/uploads/media-recorder", UploadsLive.MediaRecorder, :index
     live "/croppr", CropprLive, :index
 
-    live "/uploads/external/auto", ExternalLive.Auto, :index
-
     live "/writers/s3", WriterLive.S3, :index
   end
 end
